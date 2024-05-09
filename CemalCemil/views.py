@@ -9,11 +9,11 @@ class PelangganListCreate(generics.ListCreateAPIView):
     queryset = Pelanggan.objects.all()
     serializer_class = PelangganSerializer
     
-    def delete(self):
+    def delete(self, request, *args, **kwargs):
         Pelanggan.objects.all().delete()
-        return Response(status=status.HTTP_204__NO_CONTEN)
+        return Response(status=status.HTTP_204_NO_CONTENT)
     
-class PelangganRetrieveUpdateDestory(generics.RetrieveUpdateDestroyAPIView):
+class PelangganRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Pelanggan.objects.all()
     serializer_class = PelangganSerializer
     lookup_field = "pk"
@@ -22,11 +22,11 @@ class PesananListCreate(generics.ListCreateAPIView):
     queryset = Pesanan.objects.all()
     serializer_class = PesananSerializer
     
-    def delete(self):
+    def delete(self, request, *args, **kwargs):
         Pesanan.objects.all().delete()
-        return Response(status=status.HTTP_204__NO_CONTEN)
+        return Response(status=status.HTTP_204_NO_CONTENT)
     
-class PesananRetrieveUpdateDestory(generics.RetrieveUpdateDestroyAPIView):
+class PesananRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Pesanan.objects.all()
     serializer_class = PesananSerializer
     lookup_field = "pk"
@@ -35,11 +35,11 @@ class MejaListCreate(generics.ListCreateAPIView):
     queryset = Meja.objects.all()
     serializer_class = MejaSerializer
     
-    def delete(self):
+    def delete(self, request, *args, **kwargs):
         Meja.objects.all().delete()
-        return Response(status=status.HTTP_204__NO_CONTEN)
+        return Response(status=status.HTTP_204_NO_CONTENT)
     
-class MejaRetrieveUpdateDestory(generics.RetrieveUpdateDestroyAPIView):
+class MejaRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Meja.objects.all()
     serializer_class = MejaSerializer
     lookup_field = "pk"
@@ -48,19 +48,19 @@ class KasirListCreate(generics.ListCreateAPIView):
     queryset = Kasir.objects.all()
     serializer_class = KasirSerializer
     
-    def delete(self):
+    def delete(self, request, *args, **kwargs):
         Kasir.objects.all().delete()
-        return Response(status=status.HTTP_204__NO_CONTEN)
+        return Response(status=status.HTTP_204_NO_CONTENT)
     
-class KasirRetrieveUpdateDestory(generics.RetrieveUpdateDestroyAPIView):
+class KasirRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Kasir.objects.all()
     serializer_class = KasirSerializer
     lookup_field = "pk"
     
 class PelangganList(APIView):
     def get(self, request, format=None):
-        pelanggans = Pelanggan.objects.all()
-        serializer = PelangganSerializer(pelanggans, many=True)
+        pelanggan = Pelanggan.objects.all()
+        serializer = PelangganSerializer(pelanggan, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
@@ -73,8 +73,8 @@ class PelangganList(APIView):
     
 class PesananList(APIView):
     def get(self, request, format=None):
-        pesanans = Pesanan.objects.all()
-        serializer = PesananSerializer(pesanans, many=True)
+        pesanan = Pesanan.objects.all()
+        serializer = PesananSerializer(pesanan, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
@@ -86,8 +86,8 @@ class PesananList(APIView):
 
 class MejaList(APIView):
     def get(self, request, format=None):
-        mejas = Meja.objects.all()
-        serializer = MejaSerializer(mejas, many=True)
+        meja = Meja.objects.all()
+        serializer = MejaSerializer(meja, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
@@ -99,8 +99,8 @@ class MejaList(APIView):
     
 class KasirList(APIView):
     def get(self, request, format=None):
-        kasirs = Kasir.objects.all()
-        serializer = KasirSerializer(kasirs, many=True)
+        kasir = Kasir.objects.all()
+        serializer = KasirSerializer(kasir, many=True)
         return Response(serializer.data)
 
     def post(self, request, format=None):
