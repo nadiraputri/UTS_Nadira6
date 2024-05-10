@@ -4,12 +4,12 @@ from .models import Pelanggan, Pesanan, Meja, Kasir
 class PelangganSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pelanggan
-        fields = ["id", "nama", "pesanan", "published_date"]
+        fields = ["id", "nama", "published_date"]
 
 class PesananSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pesanan
-        fields = ["id", "nama_pesanan", "pembelian", "jumlah", "total", "published_date"]
+        fields = ["id", "nama_pesanan", "meja", "jumlah", "total"]
         
 class MejaSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,6 +17,7 @@ class MejaSerializer(serializers.ModelSerializer):
         fields = ["id", "nomor_meja", "pesanan"]
         
 class KasirSerializer(serializers.ModelSerializer):
+    # pesanan = serilizers.PriaryKeyRelatedfield(many=True, read_only=True)
     class Meta:
         model = Kasir
-        fields = ["id", "nama_pelanggan", "pesanan", "total", "uang_masuk", "kembalian", "published_date"]
+        fields = ["id", "Pesanan", "nama_pelanggan", "total", "uang_masuk", "kembalian", "published_date"]
