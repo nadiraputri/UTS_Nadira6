@@ -4,7 +4,7 @@ from .models import Pelanggan, Pesanan, Meja, Kasir
 class PelangganSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pelanggan
-        fields = ["id", "nama", "published_date"]
+        fields = ["id", "meja", "nama", "published_date"]
 
 class PesananSerializer(serializers.ModelSerializer):
     class Meta:

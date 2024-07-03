@@ -20,17 +20,17 @@ class Kasir(models.Model):
     
     def __str__(self):  
         return self.Pesanan
-    
-class Pelanggan(models.Model):
-    nama = models.CharField(max_length=100)
-    published_date = models.DateTimeField(auto_now_add=True)
-    
-    def __str__(self):
-        return self.nama
-    
 class Meja(models.Model):
     nomor_meja = models.CharField(max_length=100)
     pesanan = models.TextField()
     
     def __str__(self):
         return self.nomor_meja
+    
+class Pelanggan(models.Model):
+    meja = models.ForeignKey(Meja, related_name='pelanggan', on_delete=models.CASCADE)
+    nama = models.CharField(max_length=100)
+    published_date = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return self.nama
